@@ -62,9 +62,9 @@ class TodoCLI:
         result += "----|-----------------|--------\n"
         for todo in todos:
             status = "Complete" if todo.completed else "Pending"
-            # Truncate long titles for display
-            title = todo.title[:15] + "..." if len(todo.title) > 15 else todo.title
-            result += f"{todo.id:<3} | {title:<15} | {status}\n"
+            # Truncate very long titles for display (high limit to show maximum characters)
+            title = todo.title[:100] + "..." if len(todo.title) > 100 else todo.title
+            result += f"{todo.id:<3} | {title:<100} | {status}\n"
 
         return result.rstrip()
 
