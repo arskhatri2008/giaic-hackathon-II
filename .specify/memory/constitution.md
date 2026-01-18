@@ -1,55 +1,65 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT
+Version change: 1.0.0 → 1.1.0
+Modified principles: None (new constitution based on user input)
+Added sections: All sections based on user input
+Removed sections: Template placeholders
+Templates requiring updates:
+- .specify/templates/plan-template.md ✅ updated
+- .specify/templates/spec-template.md ✅ updated
+- .specify/templates/tasks-template.md ✅ updated
+- .specify/templates/commands/*.md ⚠ pending
+- README.md ⚠ pending
+Follow-up TODOs: None
+-->
+# AI-Native Todo Application Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Simplicity First
+Phase I must remain lightweight, in-memory, and console-based with zero external dependencies. Each phase must build cleanly on the previous phase without breaking backward compatibility.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Incremental Architecture
+Each phase must build cleanly on the previous phase without breaking backward compatibility. No over-engineering in early phases.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Code Quality & Readability
+Clear, modular, and maintainable code suitable for long-term evolution. Codebase remains clean, readable, and well-structured across all phases.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Technology Alignment
+Use only the technologies specified per phase; no premature abstractions. No cloud, database, or AI components introduced before their designated phase.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### AI-Readiness
+Design decisions must keep the system extensible for AI agents and conversational interfaces. Clear boundary between deterministic logic and AI reasoning.
 
-### [PRINCIPLE_6_NAME]
+### Production Mindset
+Even early phases should follow best practices suitable for real-world systems. Each phase must be independently runnable and testable.
 
+## Key Standards
 
-[PRINCIPLE__DESCRIPTION]
+### Phase I (In-Memory Console App)
+Python only, no database, no file persistence. Console-based interaction (CLI). CRUD operations for todos. Clean separation of concerns (logic, input handling, output). Deterministic behavior with predictable outputs.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Phase II (Full-Stack Web App)
+Frontend: Next.js. Backend: FastAPI with SQLModel. Database: Neon (PostgreSQL). RESTful API design with proper validation and error handling.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Phase III (AI-Powered Todo Chatbot)
+Integration with OpenAI ChatKit. Use Agents SDK and Official MCP SDK. Natural language task creation, updates, and queries. Clear boundary between deterministic logic and AI reasoning.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Phase IV (Local Kubernetes Deployment)
+Containerization using Docker. Local orchestration via Minikube. Helm charts for deployment. AI-assisted operations using kubectl-ai and kagent.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Phase V (Advanced Cloud Deployment)
+Event-driven architecture using Kafka. Service orchestration with Dapr. Deployment on DigitalOcean DOKS. Scalability, resilience, and observability considered mandatory.
+
+## Constraints
+
+No over-engineering in early phases. No cloud, database, or AI components introduced before their designated phase. Each phase must be independently runnable and testable. Clear documentation of assumptions and design decisions per phase.
+
+## Success Criteria
+
+Phase I delivers a fully functional in-memory console todo app. Each subsequent phase extends functionality without refactoring core concepts. Codebase remains clean, readable, and well-structured across all phases. System successfully evolves into an AI-powered, cloud-native application. Architecture supports real-world usage, scaling, and intelligent interaction.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution governs all development decisions for the AI-Native Todo Application. All phases must comply with the respective technology stacks and architectural constraints specified. Each phase must maintain backward compatibility with previous phases. Changes to this constitution require explicit approval and documentation of the reasoning.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.1.0 | **Ratified**: 2026-01-18 | **Last Amended**: 2026-01-18
