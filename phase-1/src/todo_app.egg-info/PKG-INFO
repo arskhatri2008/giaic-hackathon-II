@@ -1,0 +1,96 @@
+Metadata-Version: 2.4
+Name: todo-app
+Version: 0.1.0
+Summary: In-Memory Python Console Todo App (Phase I)
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+
+# In-Memory Python Console Todo App (Phase I)
+
+A command-line todo application in Python that operates entirely in memory with no external storage. The application provides core todo management features through a CLI interface.
+
+## Features
+
+- Add new todos
+- View all todos
+- Update existing todos
+- Delete todos
+- Mark todos as complete/incomplete
+
+## Installation
+
+```bash
+pip install .
+```
+
+Or run directly:
+
+```bash
+python -m src.todo_app.cli.main
+```
+
+## Usage
+
+Start the application:
+
+```bash
+todo-app
+```
+
+Available commands:
+
+- `add "todo description"` - Add a new todo
+- `view` - View all todos
+- `update <id> "new description"` - Update a todo
+- `delete <id>` - Delete a todo
+- `complete <id>` - Mark a todo as complete
+- `incomplete <id>` - Mark a todo as incomplete
+- `quit` or `exit` - Exit the application
+
+## Example
+
+```
+> add "Buy groceries"
+Todo added with ID: 1
+
+> add "Walk the dog"
+Todo added with ID: 2
+
+> view
+ID  | Title           | Status
+----|-----------------|--------
+1   | Buy groceries   | Pending
+2   | Walk the dog    | Pending
+
+> complete 1
+Todo 1 marked as complete
+
+> view
+ID  | Title           | Status
+----|-----------------|--------
+1   | Buy groceries   | Complete
+2   | Walk the dog    | Pending
+
+> quit
+```
+
+## Architecture
+
+The application follows a clean architecture pattern with:
+
+- **Models**: Todo entity and TodoList collection
+- **Repositories**: In-memory storage implementation
+- **Services**: Business logic layer
+- **CLI**: Command-line interface layer
+
+## Testing
+
+Run the tests with:
+
+```bash
+pytest
+```
+
+Tests are organized in:
+- `tests/unit/` - Unit tests for individual components
+- `tests/integration/` - Integration tests for command flows
